@@ -3,6 +3,7 @@ import styled from 'styled-components'
 export const HistoryContainer = styled.main`
   flex: 1;
   padding: 3.5rem;
+  overflow: auto;
 
   display: flex;
   flex-direction: column;
@@ -14,7 +15,7 @@ export const HistoryContainer = styled.main`
 `
 export const HistoryList = styled.div`
   flex: 1;
-  overflow: auto;
+
   margin-top: 2rem;
 
   table {
