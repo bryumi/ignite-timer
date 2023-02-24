@@ -6,7 +6,6 @@ interface CreateCycleData {
 }
 
 interface Cycle {
-  cycles: Cycle[]
   id: string
   task: string
   minutesAmount: number
@@ -16,6 +15,7 @@ interface Cycle {
 }
 
 interface CyclesContextType {
+  cycles: Cycle[]
   activeCycle: Cycle | undefined
   activeCycleId: string | null
   amountSecondsPassed: number
@@ -66,8 +66,6 @@ export function CyclesContextProvider({
     setCycles((state) => [...cycles, newCycle])
     setActiveCycleId(id)
     setAmountSecondsPassed(0)
-
-    // reset()
   }
 
   function interruptCurrentCycle() {
@@ -87,11 +85,14 @@ export function CyclesContextProvider({
   return (
     <CyclesContext.Provider
       value={{
+        cycles,
         activeCycle,
         activeCycleId,
         markCurrentCycleAsFinished,
         amountSecondsPassed,
         setSecondsPassed,
+        createNewCycle,
+        interruptCurrentCycle,
       }}
     >
       {children}
